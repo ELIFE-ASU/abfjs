@@ -1,0 +1,27 @@
+{
+  "name": "abfjs",
+  "version": "1.0.0",
+  "description": "A package for reading Axon Binary Format (ABF) files",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dglmoore/abfjs.git"
+  },
+  "keywords": [
+    "abf",
+    "bio",
+    "science"
+  ],
+  "author": "Douglas G. Moore <doug@dglmoore.com> (https://dglmoore.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dglmoore/abfjs/issues"
+  },
+  "homepage": "https://dglmoore.com/abfjs",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
