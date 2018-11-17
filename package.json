@@ -22,6 +22,8 @@
   },
   "homepage": "https://dglmoore.com/abfjs",
   "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-plugin-jest": "^22.0.0",
     "jest": "^23.6.0"
   },
   "dependencies": {
