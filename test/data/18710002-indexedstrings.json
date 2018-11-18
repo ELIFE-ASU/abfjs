@@ -1,0 +1,60 @@
+{
+    "adc": {
+        "adc_channel_name": [
+            "Vm"
+        ],
+        "adc_units": [
+            "mV"
+        ]
+    },
+    "dac": {
+        "dac_channel_name": [
+            "I_output",
+            "Cmd 1",
+            "Cmd 2",
+            "Cmd 3",
+            "Cmd 4",
+            "Cmd 5",
+            "Cmd 6",
+            "Cmd 7"
+        ],
+        "dac_channel_units": [
+            "pA",
+            "mV",
+            "mV",
+            "mV",
+            "mV",
+            "mV",
+            "mV",
+            "mV"
+        ],
+        "dac_file_path": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "leak_subtract_adc": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "header": {
+        "creator_name": "Clampex",
+        "modifier_name": "",
+        "protocol_path": "C:\\Users\\mbonza01\\Documents\\Molecular Devices\\pCLAMP\\Params\\AP stimulation\\AP no stimuation.pro"
+    },
+    "protocol": {
+        "file_comment": ""
+    }
+}
