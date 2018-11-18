@@ -1,0 +1,92 @@
+{
+    "adc_per_dac_section": [
+        0,
+        0,
+        0
+    ],
+    "adc_section": [
+        2,
+        128,
+        1
+    ],
+    "annotation_section": [
+        0,
+        0,
+        0
+    ],
+    "dac_section": [
+        3,
+        256,
+        8
+    ],
+    "data_section": [
+        13,
+        2,
+        632500
+    ],
+    "delta_section": [
+        0,
+        0,
+        0
+    ],
+    "epoch_per_dac_section": [
+        7,
+        48,
+        2
+    ],
+    "epoch_section": [
+        8,
+        32,
+        2
+    ],
+    "math_section": [
+        0,
+        0,
+        0
+    ],
+    "protocol_section": [
+        1,
+        512,
+        1
+    ],
+    "scope_section": [
+        11,
+        769,
+        1
+    ],
+    "stats_region_section": [
+        9,
+        128,
+        1
+    ],
+    "stats_section": [
+        0,
+        0,
+        0
+    ],
+    "strings_section": [
+        10,
+        229,
+        20
+    ],
+    "synch_array_section": [
+        2484,
+        8,
+        23
+    ],
+    "tag_section": [
+        0,
+        0,
+        0
+    ],
+    "user_list_section": [
+        0,
+        0,
+        0
+    ],
+    "voice_tag_section": [
+        0,
+        0,
+        0
+    ]
+}
