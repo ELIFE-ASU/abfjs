@@ -1,0 +1,83 @@
+{
+    "adc_channel_name_index": [
+        3
+    ],
+    "adc_display_amplification": [
+        32.0
+    ],
+    "adc_display_offset": [
+        -0.0152587890625
+    ],
+    "adc_num": [
+        0
+    ],
+    "adc_p_to_l_channel_map": [
+        0
+    ],
+    "adc_programmable_gain": [
+        1.0
+    ],
+    "adc_sampling_sequence": [
+        0
+    ],
+    "adc_units_index": [
+        4
+    ],
+    "enabled_during_pn": [
+        0
+    ],
+    "highpass_filter_type": [
+        0
+    ],
+    "instrument_offset": [
+        0.0
+    ],
+    "instrument_scale_factor": [
+        0.009999999776482582
+    ],
+    "lowpass_filter_type": [
+        0
+    ],
+    "post_process_lowpass_filter": [
+        100000.0
+    ],
+    "post_process_lowpass_filter_type": [
+        "\u0000"
+    ],
+    "signal_gain": [
+        1.0
+    ],
+    "signal_highpass_filter": [
+        1.0
+    ],
+    "signal_lowpass_filter": [
+        1000.0
+    ],
+    "signal_offset": [
+        0.0
+    ],
+    "stats_channel_polarity": [
+        0
+    ],
+    "telegraph_access_resistance": [
+        0.0
+    ],
+    "telegraph_addit_gain": [
+        1.0
+    ],
+    "telegraph_enable": [
+        1
+    ],
+    "telegraph_filter": [
+        10000.0
+    ],
+    "telegraph_instrument": [
+        "MultiClamp 700"
+    ],
+    "telegraph_membrane_cap": [
+        0.0
+    ],
+    "telegraph_mode": [
+        1
+    ]
+}
