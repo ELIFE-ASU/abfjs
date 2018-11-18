@@ -1,0 +1,38 @@
+{
+    "dac_num": [
+        0,
+        0
+    ],
+    "epoch_duration_inc": [
+        0,
+        0
+    ],
+    "epoch_init_duration": [
+        250,
+        22500
+    ],
+    "epoch_init_level": [
+        0.0,
+        0.0
+    ],
+    "epoch_level_inc": [
+        0.0,
+        0.0
+    ],
+    "epoch_num": [
+        0,
+        1
+    ],
+    "epoch_pulse_period": [
+        0,
+        0
+    ],
+    "epoch_pulse_width": [
+        0,
+        0
+    ],
+    "epoch_type": [
+        1,
+        1
+    ]
+}
