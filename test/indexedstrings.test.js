@@ -1,12 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
-const Header = require('../src/header');
-const SectionMap = require('../src/sectionmap');
-const Protocol = require('../src/protocol');
-const ADC = require('../src/adc');
-const DAC = require('../src/dac');
-const Strings = require('../src/strings');
-const IndexedStrings = require('../src/indexedstrings');
+const header = require('../src/header');
 
 const is_abf = (filename) => path.extname(filename) === '.abf';
 
@@ -20,14 +14,14 @@ const build_table = function() {
         const json_path = path.join(data_dir, json_files[idx]);
         const data = fs.readFileSync(abf_path);
 
-        const header = Header(data);
-        const section_map = SectionMap(data);
-        const protocol = Protocol(data, section_map);
-        const adc = ADC(data, section_map);
-        const dac = DAC(data, section_map);
-        const strings = Strings(data, section_map);
+        const head        = header.Header(data);
+        const section_map = header.SectionMap(data);
+        const protocol    = header.Protocol(data, section_map);
+        const adc         = header.ADC(data, section_map);
+        const dac         = header.DAC(data, section_map);
+        const strings     = header.Strings(data, section_map);
 
-        const got = IndexedStrings(header, protocol, adc, dac, strings);
+        const got      = header.IndexedStrings(head, protocol, adc, dac, strings);
         const expected = JSON.parse(fs.readFileSync(json_path));
 
         return [abf_path, got, expected];

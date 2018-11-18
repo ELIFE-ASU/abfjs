@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
-const SectionMap = require('../src/sectionmap');
+const {SectionMap} = require('../src/header');
 
 const is_abf = (filename) => path.extname(filename) === '.abf';
 
