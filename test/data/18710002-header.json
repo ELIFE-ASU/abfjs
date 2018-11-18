@@ -1,0 +1,65 @@
+{
+    "actual_episodes": 23,
+    "crc_enable": 0,
+    "creator": {
+        "bugfix": 0,
+        "build": 36,
+        "major": 10,
+        "minor": 4
+    },
+    "creator_float": 104.036,
+    "creator_name_index": 1,
+    "creator_string": "10.4.0.36",
+    "creator_version": [
+        36,
+        0,
+        4,
+        10
+    ],
+    "data_format": 0,
+    "date_time": "2018-07-10T14:32:03.375Z",
+    "file_crc": 0,
+    "file_guid": [
+        133,
+        38,
+        227,
+        134,
+        58,
+        109,
+        73,
+        79,
+        179,
+        238,
+        25,
+        21,
+        238,
+        159,
+        165,
+        130
+    ],
+    "filetype": 1,
+    "guid": "{86E32685-6D3A-4F49-B3EE-1915EE9F8282}",
+    "info_size": 512,
+    "modifier_name_index": 0,
+    "modifier_version": 0,
+    "protocol_path_index": 2,
+    "signature": "ABF2",
+    "simultaneous_scan": 1,
+    "start_date": 20180710,
+    "start_time_ms": 52323375,
+    "stopwatch_time": 5749,
+    "version": {
+        "bugfix": 0,
+        "build": 0,
+        "major": 2,
+        "minor": 3
+    },
+    "version_float": 2.3,
+    "version_number": [
+        0,
+        0,
+        3,
+        2
+    ],
+    "version_string": "2.3.0.0"
+}
