@@ -21,6 +21,10 @@
     "url": "https://github.com/dglmoore/abfjs/issues"
   },
   "homepage": "https://dglmoore.com/abfjs",
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
   "devDependencies": {
     "eslint": "^5.9.0",
     "eslint-plugin-jest": "^22.0.0",

@@ -11,6 +11,7 @@ node_js:
 cache:
     directories:
         - node_modules
+        - coverage
 
 install:
     - npm install
