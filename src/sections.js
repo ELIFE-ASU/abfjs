@@ -553,15 +553,28 @@ const IndexedStrings = function(header, protocol, adc, dac, strings) {
     return indexed_strings;
 };
 
-module.exports = {
-    Header,
-    SectionMap,
-    Protocol,
-    ADC,
-    DAC,
-    Epoch,
-    EpochPerDAC,
-    Tag,
-    Strings,
-    IndexedStrings
+module.exports = function(data) {
+    const header          = Header(data);
+    const section_map     = SectionMap(data);
+    const protocol        = Protocol(data, section_map);
+    const adc             = ADC(data, section_map);
+    const dac             = DAC(data, section_map);
+    const epoch           = Epoch(data, section_map);
+    const epochperdac     = EpochPerDAC(data, section_map);
+    const tag             = Tag(data, section_map);
+    const strings         = Strings(data, section_map);
+    const indexed_strings = IndexedStrings(header, protocol, adc, dac, strings);
+
+    return {
+        header,
+        section_map,
+        protocol,
+        adc,
+        dac,
+        epoch,
+        epochperdac,
+        tag,
+        strings,
+        indexed_strings
+    };
 };
