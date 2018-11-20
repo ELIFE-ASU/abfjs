@@ -1,6 +1,6 @@
 const signale = require('signale');
 const path = require('path');
-const fs = require('fs-extra');
+const fs = require('fs');
 const Sections = require('./src/sections');
 
 const BLOCK_SIZE = 512;
