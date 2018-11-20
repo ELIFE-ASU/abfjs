@@ -1,6 +1,7 @@
 const signale = require('signale');
 const path = require('path');
 const fs = require('fs-extra');
+const Sections = require('./src/sections');
 
 const abf_file_format = function(data) {
     const fmt = data.toString('ascii', 0, 4);
@@ -32,6 +33,8 @@ module.exports = function(filepath, verbosity=0) {
     } else if (abf.version.major !== 2) {
         throw new Error(`Unsupported ABF file format: ${abf.version}`);
     }
+
+    abf.sections = Sections(data);
 
     return abf;
 };
