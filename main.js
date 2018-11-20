@@ -164,7 +164,7 @@ const ABFPrototype = {
             throw new Error(msg);
         }
 
-        if (this.sweep_number !== sweep_number) {
+        if (this.sweep_number !== sweep_number || this.sweep_channel !== channel) {
             this.sweep_number = sweep_number;
             this.sweep_channel = channel;
             this.sweep_units_x = 'sec';
