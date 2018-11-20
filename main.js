@@ -171,6 +171,18 @@ const ABFPrototype = {
                 }
             }
         }
+    },
+
+    toString: function() {
+        const version = `ABF${this.version.major}`;
+        const file = path.basename(this.filepath);
+        const channels = this.channel_count;
+        const sweeps = this.sweep_count;
+        const duration =  Math.round(100 * this.sweep_length_time * this.sweep_count / 60) / 100;
+        const cstr = (channels !== 1) ? 'channels' : 'channel';
+        const sstr = (sweeps !== 1) ? 'sweeps' : 'sweep';
+
+        return `${version} file (${file}) with ${channels} ${cstr}, ${sweeps} ${sstr}, and duration of ${duration} min`;
     }
 };
 
