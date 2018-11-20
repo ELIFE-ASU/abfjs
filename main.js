@@ -87,6 +87,23 @@ const ABFPrototype = {
         this.adc_names = indexed_strings.adc.channel_names.slice(0, this.channel_count);
         this.dac_units = indexed_strings.dac.channel_units.slice(0, this.channel_count);
         this.dac_names = indexed_strings.dac.channel_names.slice(0, this.channel_count);
+
+        this.x_labels = new Array(this.channel_count);
+        this.y_labels = new Array(this.channel_count);
+        this.c_labels = new Array(this.channel_count);
+        for (let i = 0; i < this.channel_count; ++i) {
+            this.x_labels[i] = `time (sec)`;
+            if (this.adc_units[i] === 'pA') {
+                this.sweep_label_y = 'Clamp Current (pA)';
+                this.sweep_label_c = 'Membrane Potential (mV)';
+            } else if (this.adc_units[i] === 'mV') {
+                this.sweep_label_y = 'Membrane Potential (mV)';
+                this.sweep_label_c = 'Applied Current (pV)';
+            } else {
+                this.y_labels[i] = `${this.adc_names[i]} (${this.adc_units[i]})`;
+                this.c_labels[i] = `${this.dac_names[i]} (${this.dac_names[i]})`;
+            }
+        }
     },
 
     load_data: function(buffer) {
@@ -107,68 +124,66 @@ const ABFPrototype = {
 
         let offset = data_byte_start;
 
-        let data = new Array(nrows);
-        for (let i = 0; i < nrows; ++i) data[i] = new Array(ncols);
+        this.channel_data = new Array(nrows);
+        for (let i = 0; i < nrows; ++i) this.channel_data[i] = new Array(ncols);
 
         for (let j = 0; j < ncols; ++j) {
             for (let i = 0; i < nrows; ++i, offset += data_point_byte_size) {
-                data[i][j] = buffer[reader](offset);
+                this.channel_data[i][j] = buffer[reader](offset);
             }
         }
 
-        this.data = { data, nrows, ncols };
+        this.sample_times = new Array(nrows);
+        for (let i = 0; i < nrows; ++i) {
+            this.sample_times[i] = new Array(ncols);
+            for (let j = 0; j < ncols; ++j) {
+                this.sample_times[i][j] = j * this.data_sec_per_point;
+            }
+        }
     },
 
     scale_data: function() {
-        const { dtype, data_gain, data_offset } = this;
+        const { dtype, data_gain, data_offset, channel_data } = this;
 
         if (dtype === 'int') {
-            const { data, nrows, ncols } = this.data;
-            for (let i = 0; i < nrows; ++i) {
-                for (let j = 0; j < ncols; ++j) {
-                    data[i][j] = data[i][j] * data_gain[i] + data_offset[i];
+            for (let i = 0, nrows = channel_data.length; i < nrows; ++i) {
+                for (let j = 0, ncols = channel_data[i].length; j < ncols; ++j) {
+                    channel_data[i][j] = channel_data[i][j] * data_gain[i] + data_offset[i];
                 }
             }
         }
     },
 
-    set_sweep: function(sweep_number, channel=0, absolute_time=false) {
-        if (sweep_number < 0 || sweep_number > this.sweep_count) {
-            throw new Error(`Invalid sweep ${sweep_number} (must be 0 to ${this.sweep_count - 1})`);
+    set_sweep: function(sweep_number = -1, channel = 0) {
+        if (sweep_number < -1 || sweep_number > this.sweep_count) {
+            const msg = `Invalid sweep ${sweep_number} (must be -1 to ${this.sweep_count - 1})`;
+            throw new Error(msg);
         }
         if (channel < 0 || channel > this.channel_count) {
-            throw new Error(`Invalide channel ${channel} (must be 0 to ${this.channel_count - 1})`);
+            const msg = `Invalid channel ${channel} (must be 0 to ${this.channel_count - 1})`;
+            throw new Error(msg);
         }
 
         if (this.sweep_number !== sweep_number) {
-            const point_start = this.sweep_point_count * sweep_number;
-            const point_end = point_start + this.sweep_point_count;
-
             this.sweep_number = sweep_number;
             this.sweep_channel = channel;
+            this.sweep_units_x = 'sec';
             this.sweep_units_y = this.adc_units[channel];
             this.sweep_units_c = this.dac_units[channel];
-            this.sweep_units_x = 'sec';
 
-            this.sweep_label_y = `${this.adc_names[channel]} (${this.sweep_units_y})`;
-            this.sweep_label_c = `${this.dac_names[channel]} (${this.sweep_units_c})`;
-            this.sweep_label_x = `time (${this.sweep_units_x})`;
+            this.sweep_x_label = this.x_labels[channel];
+            this.sweep_y_label = this.y_labels[channel];
+            this.sweep_c_label = this.c_labels[channel];
 
-            if (this.sweep_units_y === 'pA') {
-                this.sweep_label_y = 'Clamp Current (pA)';
-                this.sweep_label_c = 'Membrane Potential (mV)';
-            } else if (this.sweep_units_y === 'mV') {
-                this.sweep_label_y = 'Membrane Potential (mV)';
-                this.sweep_label_c = 'Applied Current (pV)';
-            }
+            if (sweep_number === -1) {
+                this.sweep_y = this.channel_data[channel].slice();
+                this.sweep_x = this.sample_times[channel].slice();
+            } else {
+                const point_start = this.sweep_point_count * sweep_number;
+                const point_end = point_start + this.sweep_point_count;
 
-            this.sweep_y = this.data.data[channel].slice(point_start, point_end);
-            this.sweep_x = new Array(this.sweep_y.length);
-            for (let i = 0, len = this.sweep_x.length; i < len; ++i) {
-                this.sweep_x[i] = i * this.data_sec_per_point;
-                if (absolute_time) {
-                    this.sweep_x[i] += this.sweep_number * this.sweep_length_time;
-                }
+                this.sweep_y = this.channel_data[channel].slice(point_start, point_end);
+                this.sweep_x = this.sample_times[channel].slice(point_start, point_end);
             }
         }
     },
@@ -224,7 +239,7 @@ module.exports = function(filepath, verbosity=0) {
 
     waiting('Scaling data', verbosity, () => abf.scale_data());
 
-    waiting('Setting sweep', verbosity, () => abf.set_sweep(0));
+    waiting('Setting sweep', verbosity, () => abf.set_sweep());
 
     return abf;
 };
