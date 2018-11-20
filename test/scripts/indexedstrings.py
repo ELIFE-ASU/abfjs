@@ -37,29 +37,29 @@ for abf_file in list(filter(isabf, os.listdir(DIR))):
                 'file_comment': indexed[protocol['file_comment_index']]
             },
             'adc': {
-                'adc_channel_name': [],
-                'adc_units':        []
+                'channel_names': [],
+                'channel_units': []
             },
             'dac': {
-                'dac_channel_name':  [],
-                'dac_channel_units': [],
-                'dac_file_path':     [],
+                'channel_names':     [],
+                'channel_units':     [],
+                'file_path':         [],
                 'leak_subtract_adc': []
             }
         }
 
         for i in range(len(adc['adc_channel_name_index'])):
-            indexed_strings['adc']['adc_channel_name'].append(
+            indexed_strings['adc']['channel_names'].append(
                     indexed[adc['adc_channel_name_index'][i]])
-            indexed_strings['adc']['adc_units'].append(
+            indexed_strings['adc']['channel_units'].append(
                     indexed[adc['adc_units_index'][i]])
 
         for i in range(len(dac['dac_channel_name_index'])):
-            indexed_strings['dac']['dac_channel_name'].append(
+            indexed_strings['dac']['channel_names'].append(
                     indexed[dac['dac_channel_name_index'][i]])
-            indexed_strings['dac']['dac_channel_units'].append(
+            indexed_strings['dac']['channel_units'].append(
                     indexed[dac['dac_channel_units_index'][i]])
-            indexed_strings['dac']['dac_file_path'].append(
+            indexed_strings['dac']['file_path'].append(
                     indexed[dac['dac_file_path_index'][i]])
             indexed_strings['dac']['leak_subtract_adc'].append(
                     indexed[dac['leak_subtract_adc_index'][i]])

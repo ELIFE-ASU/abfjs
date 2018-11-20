@@ -1,14 +1,14 @@
 {
     "adc": {
-        "adc_channel_name": [
+        "channel_names": [
             "Vm"
         ],
-        "adc_units": [
+        "channel_units": [
             "mV"
         ]
     },
     "dac": {
-        "dac_channel_name": [
+        "channel_names": [
             "I_output",
             "Cmd 1",
             "Cmd 2",
@@ -18,7 +18,7 @@
             "Cmd 6",
             "Cmd 7"
         ],
-        "dac_channel_units": [
+        "channel_units": [
             "pA",
             "mV",
             "mV",
@@ -28,7 +28,7 @@
             "mV",
             "mV"
         ],
-        "dac_file_path": [
+        "file_path": [
             "",
             "",
             "",

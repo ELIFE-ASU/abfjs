@@ -83,10 +83,10 @@ const ABFPrototype = {
         this.sweep_point_count = this.data_point_count / (this.sweep_count * this.channel_count);
         this.sweep_length_time = this.sweep_point_count / this.data_rate;
 
-        this.adc_units = indexed_strings.adc.adc_units.slice(0, this.channel_count);
-        this.adc_names = indexed_strings.adc.adc_channel_name.slice(0, this.channel_count);
-        this.dac_units = indexed_strings.dac.dac_channel_units.slice(0, this.channel_count);
-        this.dac_names = indexed_strings.dac.dac_channel_name.slice(0, this.channel_count);
+        this.adc_units = indexed_strings.adc.channel_units.slice(0, this.channel_count);
+        this.adc_names = indexed_strings.adc.channel_names.slice(0, this.channel_count);
+        this.dac_units = indexed_strings.dac.channel_units.slice(0, this.channel_count);
+        this.dac_names = indexed_strings.dac.channel_names.slice(0, this.channel_count);
     },
 
     load_data: function(buffer) {
