@@ -65,6 +65,15 @@ const load_variables = function(abf) {
 
         abf.data_offset[i] = adc.instrument_offset[i] - adc.signal_offset[i];
     }
+
+    abf.data_rate = 1e6 / protocol.adc_sequence_interval;
+
+    abf.sweep_count = header.actual_episodes;
+    if (abf.sweep_count === 0) {
+        abf.sweep_count = 1;
+    }
+    abf.sweep_point_count = abf.data_point_count / (abf.sweep_count * abf.channel_count);
+    abf.sweep_length_time = abf.sweep_point_count / abf.data_rate;
 };
 
 const load_data = function(abf, buffer) {
