@@ -167,7 +167,7 @@ const ABFPrototype = {
             for (let i = 0, len = this.sweep_x.length; i < len; ++i) {
                 this.sweep_x[i] = i * this.data_sec_per_point;
                 if (absolute_time) {
-                    this.sweep_x[i] += this.sweep_number * this.sweep_length_sec;
+                    this.sweep_x[i] += this.sweep_number * this.sweep_length_time;
                 }
             }
         }
