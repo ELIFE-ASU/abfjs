@@ -94,11 +94,11 @@ const ABFPrototype = {
         for (let i = 0; i < this.channel_count; ++i) {
             this.x_labels[i] = `time (sec)`;
             if (this.adc_units[i] === 'pA') {
-                this.sweep_label_y = 'Clamp Current (pA)';
-                this.sweep_label_c = 'Membrane Potential (mV)';
+                this.y_labels[i] = 'Clamp Current (pA)';
+                this.c_labels[i] = 'Membrane Potential (mV)';
             } else if (this.adc_units[i] === 'mV') {
-                this.sweep_label_y = 'Membrane Potential (mV)';
-                this.sweep_label_c = 'Applied Current (pV)';
+                this.y_labels[i] = 'Membrane Potential (mV)';
+                this.c_labels[i] = 'Applied Current (pV)';
             } else {
                 this.y_labels[i] = `${this.adc_names[i]} (${this.adc_units[i]})`;
                 this.c_labels[i] = `${this.dac_names[i]} (${this.dac_names[i]})`;
