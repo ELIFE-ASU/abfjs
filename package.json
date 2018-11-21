@@ -1,5 +1,5 @@
 {
-  "name": "abfjs",
+  "name": "abf",
   "version": "1.0.0",
   "description": "A package for reading Axon Binary Format (ABF) files",
   "main": "main.js",
