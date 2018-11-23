@@ -1,4 +1,4 @@
-# abfjs
+# abf
 A package for reading Axon Binary Format (ABF) files
 
 | **Build Status**                                                                                |
@@ -14,3 +14,19 @@ A package for reading Axon Binary Format (ABF) files
 [codecov-img]: https://codecov.io/gh/dglmoore/abfjs/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/dglmoore/abfjs
 
+## Installation
+```bash
+npm install @dglmoore/abf
+```
+
+## Quickstart
+```javascript
+const ABF = require('@dglmoore/abf');
+const abf = ABF('demo.abf');
+abf.set_sweep(0);
+console.log(abf.sweep_x);
+console.log(abf.sweep_y);
+```
+
+## Acknowledgements
+The abf package is and will continue to be heavily influenced by the [pyABF](https://github.com/swharden/pyABF) project.
