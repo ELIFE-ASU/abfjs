@@ -25,6 +25,9 @@
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "eslint": "^5.9.0",
     "eslint-plugin-jest": "^22.0.0",
