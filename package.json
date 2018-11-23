@@ -1,6 +1,6 @@
 {
   "name": "@dglmoore/abf",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A package for reading Axon Binary Format (ABF) files",
   "main": "main.js",
   "scripts": {
